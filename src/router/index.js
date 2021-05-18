@@ -44,10 +44,16 @@ export const constantRoutes = [
                 meta: { title: '首页' }
             },
             {
+                path: '/docs',
+                name: 'Docs',
+                component: (resolve) => require(['@/views/docs/index'],resolve),
+                meta: { title: 'Docs文档' }
+            },
+            {
                 path: '/html5',
                 name: 'Html5',
                 component: LayoutEmpty,
-                meta: { title: 'html5' },
+                meta: { title: 'Html5标签' },
                 children: [
                     {
                         path: 'MapArea',
@@ -61,7 +67,7 @@ export const constantRoutes = [
                 path: '/echarts',
                 name: 'Echarts',
                 component: LayoutEmpty,
-                meta: { title: 'echarts' },
+                meta: { title: 'Echarts图表' },
                 children: [
                     {
                         path: 'Bar3D',

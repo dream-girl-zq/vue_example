@@ -269,7 +269,7 @@ export default {
     line-height: 2rem;
 }
 .sqwgh-tp-page >>> .el-input.el-input--mini{
-    width: 8.34rem;
+    width: 8.4rem;
     margin: 0;
 }
 .sqwgh-tp-page >>> .el-input.el-input--mini>.el-input__inner{
@@ -280,6 +280,7 @@ export default {
     background-color: #122842;
     font-size: 1.2rem;
     color: #fff;
+    width: 8.4rem;
 }
 .sqwgh-tp-page >>> .el-select__caret.el-input__icon{
   line-height: 2rem;

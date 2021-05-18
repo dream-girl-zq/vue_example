@@ -7,16 +7,40 @@
   height: 100%;
   position: relative;
 }
+.zq-app-main-goBackBtn{
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  z-index: 999;
+  width: 4.2rem;
+  height: 4.2rem;
+  background-image: url("../images/map_back.png");
+  background-size: 100% 100%;
+  cursor: pointer;
+}
 .zq-app-main-head{
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
 }
+/*height计算规则line*4.2+1*/
+.zq-app-main-container.twoLine{
+  padding-top: 9.2rem;
+}
+.zq-app-main-container.twoLine .zq-app-main-head{
+  height: 9.2rem;
+  padding: 0.5rem 0;
+}
+.zq-app-main-head-item{
+  height: 4.2rem;
+  padding: 0.5rem 0;
+}
 .zq-app-main-body{
   width: 100%;
   height: 100%;
   position: relative;
+  padding: 0 2rem;
 }
 .zq-app-main-left50,
 .zq-app-main-right50{
@@ -41,4 +65,34 @@
 }
 .zq-app-main-bottom50{
   padding-top: 0.5rem;
+}
+/*form表单*/
+.el-form--inline .el-form-item{
+  margin: 0;
+  padding-left: 2rem;
+}
+.el-form-item__label{
+  color: rgba(255,255,255,.8);
+  font-size: 1.4rem;
+}
+.el-input{
+  font-size: 1.4rem;
+}
+.el-input .el-input__inner{
+  background-color: #112842;
+  color: rgba(255,255,255,.8);
+  border: 0.1rem solid #3c85b3;
+  height: 3.2rem;
+  line-height: 3.2rem;
+  width: 20rem;
+}
+/*按钮样式开始*/
+.el-button{
+  height: 3.4rem;
+  padding: 0 1.5rem;
+  font-size: 1.4rem;
+  line-height: 3.4rem;
+  background-color: #04294b;
+  border: 0.1rem solid #3c85b3;
+  color: rgba(255,255,255,.8);
 }

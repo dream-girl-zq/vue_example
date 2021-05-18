@@ -10,8 +10,8 @@
                             <el-button/>
                         </template>
                     </el-table-column>
-                    <el-table-column label="项目名称"/>
-                    <el-table-column label="项目内容"/>
+                    <el-table-column label="项目名称" prop="name"/>
+                    <el-table-column label="项目内容" prop="name"/>
                 </el-table>
             </div>
         </LayoutTableAndPage>

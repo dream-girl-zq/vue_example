@@ -12,6 +12,13 @@ import store from './store/index'
 //导航守卫
 import './NavGuard'
 
+import jQuery from 'jquery'
+window.$ = jQuery
+window.jQuery = jQuery
+Vue.prototype.$ = jQuery
+
+
+
 //导入echarts
 import VCharts from 'vue-echarts'
 //自定义组件导入
