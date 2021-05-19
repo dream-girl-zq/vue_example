@@ -15,7 +15,7 @@
         </div>
         <div class="zq-app-main-right50">
             <div class="zq-app-main-top50">
-                <LayoutCard title="带背景的3D柱状图">
+                <LayoutCard title="3D堆积柱状图">
                     <BarStack3D slot="content" :dataObj="dataObjStackBarOne" />
                 </LayoutCard>
             </div>

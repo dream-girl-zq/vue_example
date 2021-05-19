@@ -4,9 +4,6 @@
         <layoutAside />
     </div>
     <div class="zq-layout-mains">
-        <div class="zq-layout-head">
-            <layoutTitle />
-        </div>
         <div class="zq-layout-body">
             <layoutAppMain />
         </div>
@@ -49,19 +46,10 @@ export default {
     width: 100%;
     height: 100%;
     position: relative;
-    padding-top: 6rem;
-}
-.zq-layout-head{
-    width: 100%;
-    height: 6rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding-left: 1rem;
 }
 .zq-layout-body{
     width: 100%;
     height: 100%;
-    padding: 1rem 0 0 1rem;
+    padding: 0 0 0 1rem;
 }
 </style>

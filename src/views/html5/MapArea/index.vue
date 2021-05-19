@@ -3,9 +3,7 @@
     <div class="zq-app-main-goBackBtn" v-show="goBackShow" @click="goBackHandle"></div>
     <div class="zq-app-main-body">
         <keep-alive>
-            <component :is="currComp"
-                :colorObj="colorObj"
-                @areaEmitHandle="areaEmitHandle"></component>
+            <component :is="currComp" @areaEmitHandle="areaEmitHandle"></component>
         </keep-alive>
     </div>
 </div>
@@ -32,11 +30,6 @@ export default {
         return {
             goBackShow: false,
             currComp: 'MapXC_',
-            colorObj: {
-                orange: 'ef790f',
-                yellow: 'b7eb09',
-                green: '07d98d'
-            },
             codeCompoentMapping: {
                 "330624010": "MapXC_cnx_",
                 "330624003": "MapXC_ctjd_",

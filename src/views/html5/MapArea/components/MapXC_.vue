@@ -1,7 +1,7 @@
 <template>
 <div style="width:100%;height:100%;padding:2rem;">
     <div class="MapBox" style="width:100%;height:100%;transform-origin:left top;">
-        <img class="MapImg" :src="xc_img" usemap="#MapXC_">
+        <img class="MapImg" :style="{visibility: Imgvisibility}" :src="xc_img" usemap="#MapXC_" @load="imgLoadHandle">
         <map id="MapXC_" name="MapXC_">
             <area v-for="(item,index) in xc_list"
                 style="cursor:pointer;"
@@ -18,19 +18,13 @@
 </div>
 </template>
 <script>
+import RenderMap from '../minxin/RenderMap'
 import xc_png from '@/assets/html5_MapArea/images/xc_.png'
 import xc_json from '@/assets/html5_MapArea/jsons/xc_.json'
 import maphilight from '@/assets/html5_MapArea/js/jquery.maphilight'
 export default {
     name: 'MapXC_',
-    props: {
-        colorObj: {
-            type: Object,
-            default: function(){
-                return {}
-            }
-        }
-    },
+    mixins: [RenderMap],
     data(){
         return {
             xc_img: xc_png,
@@ -38,73 +32,9 @@ export default {
         }
     },
     methods: {
-        setMapColor(){
-            let colorObj = this.colorObj;
-            $(".MapImg").maphilight();
-            setTimeout(()=>{
-                let mapConf = {};
-                mapConf.boxW = $('.MapBox').width();
-                mapConf.boxH = $('.MapBox').height();
-                mapConf.imgW = $('.MapImg').width();
-                mapConf.imgH = $('.MapImg').height();
-                let scaleW = mapConf.boxW/mapConf.imgW;
-                let scaleH = mapConf.boxH/mapConf.imgH;
-                let scale,marginCalc;
-                if(scaleW>scaleH){
-                    scale = scaleH;
-                    marginCalc = (mapConf.boxW-mapConf.imgW*scale)/2;
-                    $('.MapBox').css({
-                        'transform':'scale('+scale+')',
-                        'margin-left': marginCalc+'px'
-                    })
-
-                }else{
-                    scale = scaleW;
-                    marginCalc = (mapConf.boxH-mapConf.imgH*scale)/2;
-                    $('.MapBox').css({
-                        'transform':'scale('+scale+')',
-                        'margin-top': marginCalc+'px'
-                    })
-                }
-                let _area = $('area');
-                for(let i=0;i<_area.length;i++){
-                    let fillColor = 'B7EC0A';
-                    if(i%3==0){
-                        fillColor = colorObj.orange;
-                    }else if(i%3==1){
-                        fillColor = colorObj.yellow;
-                    }else if(i%3==2){
-                        fillColor = colorObj.green;
-                    }
-                    $(_area[i]).data('maphilight',{
-                        alwaysOn: true,
-                        strokeColor: fillColor,
-                        strokeWidth: 2,
-                        fillColor: fillColor,
-                        fillOpacity: .3,
-                        shadow: true
-                    }).trigger('alwaysOn');
-                }
-            },10)
-        },
         areaHandle(code){
             this.$emit('areaEmitHandle',code);
-        },
-        mouseoverHandle(code){
-            $('#'+code).data('maphilight',{
-                fillOpacity: .5
-            });
-        },
-        mouseoutHandle(code){
-            $('#'+code).data('maphilight',{
-                fillOpacity: .3
-            });
         }
-    },
-    mounted(){
-        this.$nextTick(()=>{
-            this.setMapColor();
-        })
     }
 }
 </script>
