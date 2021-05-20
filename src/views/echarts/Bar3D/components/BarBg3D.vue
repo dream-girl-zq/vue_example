@@ -7,7 +7,7 @@
 import * as echarts from 'echarts'
 import { GridConf,LengedConf,XAxisConf,YAxisConf } from '@/utils/echarts_conf'
 export default {
-    name: 'BgBar3D',
+    name: 'BarBg3D',
     props: {
         dataObj: {
             type: Object,

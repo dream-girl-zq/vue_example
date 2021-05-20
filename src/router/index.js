@@ -74,6 +74,11 @@ export const constantRoutes = [
                         name: 'Bar3D',
                         component: (resolve) => require(['@/views/echarts/Bar3D/index'],resolve),
                         meta: { title: 'Bar3D' }
+                    },{
+                        path: 'Bar2D',
+                        name: 'Bar2D',
+                        component: (resolve) => require(['@/views/echarts/Bar2D/index'],resolve),
+                        meta: { title: 'Bar2D' }
                     }
                 ]
             }

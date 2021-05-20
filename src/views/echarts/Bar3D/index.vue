@@ -1,6 +1,6 @@
 <template>
 <div class="zq-app-main-container">
-    <div class="zq-app-main-body" style="padding:1rem;">
+    <div class="zq-app-main-body" style="padding:1rem 2rem;">
         <div class="zq-app-main-left50">
             <div class="zq-app-main-top50">
                 <LayoutCard title="3D堆积柱状图">
@@ -8,7 +8,7 @@
                 </LayoutCard>
             </div>
             <div class="zq-app-main-bottom50">
-                <LayoutCard title="3D堆积柱状图">
+                <LayoutCard title="3D柱状图">
                     <BarStack3D slot="content" :dataObj="dataObjStackBarTwo" />
                 </LayoutCard>
             </div>
@@ -21,7 +21,7 @@
             </div>
             <div class="zq-app-main-bottom50">
                 <LayoutCard title="带背景的3D柱状图">
-                    <BgBar3D slot="content" :dataObj="dataObjBgBar" />
+                    <BarBg3D slot="content" :dataObj="dataObjBgBar" />
                 </LayoutCard>
             </div>
         </div>
@@ -33,7 +33,7 @@ export default {
     name: 'Bar3D',
     components: {
         BarStack3D: (resolve) => require(['./components/BarStack3D'],resolve),
-        BgBar3D: (resolve) => require(['./components/BgBar3D'],resolve)
+        BarBg3D: (resolve) => require(['./components/BarBg3D'],resolve)
     },
     data(){
         return {
