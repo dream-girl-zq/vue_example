@@ -14,6 +14,8 @@ Vue.use(Router)
 
 import Layout from '@/layout'
 import LayoutEmpty from '@/layout/indexEmpty'
+import layoutMobile from '@/layoutMobile'
+
 
 //公共前端写死的路由
 export const constantRoutes = [
@@ -70,17 +72,54 @@ export const constantRoutes = [
                 meta: { title: 'Echarts图表' },
                 children: [
                     {
-                        path: 'Bar3D',
-                        name: 'Bar3D',
-                        component: (resolve) => require(['@/views/echarts/Bar3D/index'],resolve),
-                        meta: { title: 'Bar3D' }
-                    },{
                         path: 'Bar2D',
                         name: 'Bar2D',
                         component: (resolve) => require(['@/views/echarts/Bar2D/index'],resolve),
-                        meta: { title: 'Bar2D' }
+                        meta: { title: '平面柱图' }
+                    },{
+                        path: 'Bar3D',
+                        name: 'Bar3D',
+                        component: (resolve) => require(['@/views/echarts/Bar3D/index'],resolve),
+                        meta: { title: '立体柱图' }
+                    },{
+                        path: 'BarCircle',
+                        name: 'BarCircle',
+                        component: (resolve) => require(['@/views/echarts/BarCircle/index'],resolve),
+                        meta: { title: '立体圆柱图' }
                     }
                 ]
+            }
+        ]
+    },
+    {
+        path: '/CANSHOWMOBILE',
+        name: 'layoutMobile',
+        hidden: false,
+        component: layoutMobile,
+        children: [
+            {
+                path: '/IndexMobile',
+                name: 'IndexMobile',
+                component: (resolve) => require(['@/views/indexMobile'],resolve),
+                meta: { title: '首页' }
+            },
+            {
+                path: '/ListMobile',
+                name: 'ListMobile',
+                component: (resolve) => require(['@/views/mobiles/List/index'],resolve),
+                meta: { title: '列表' }
+            },
+            {
+                path: '/ApplyMobile',
+                name: 'ApplyMobile',
+                component: (resolve) => require(['@/views/mobiles/Apply/index'],resolve),
+                meta: { title: '申请' }
+            },
+            {
+                path: '/MineMobile',
+                name: 'MineMobile',
+                component: (resolve) => require(['@/views/mobiles/Mine/index'],resolve),
+                meta: { title: '我的' }
             }
         ]
     }

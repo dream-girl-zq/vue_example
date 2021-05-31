@@ -205,7 +205,6 @@ export default {
                 },
                 series: chartConf.series
             }
-            console.log(this.chartOptions)
         }
     },
     mounted(){

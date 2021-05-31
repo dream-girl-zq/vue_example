@@ -5,6 +5,10 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/styles/element-ui-reset-default.scss'
 
+//导入mint-ui插件
+import VantUI from 'vant'
+import 'vant/lib/index.css'
+
 import App from './App.vue'
 import router from './router/index'
 import store from './store/index'
@@ -12,6 +16,8 @@ import store from './store/index'
 //导航守卫
 import './NavGuard'
 
+//这里的jQuery引入是为了配合jquery.maphilight.js
+//npm安装的jQuery会报错，安装jquery正常运行
 import jQuery from 'jquery'
 window.$ = jQuery
 window.jQuery = jQuery
@@ -31,7 +37,10 @@ Vue.component('v-chart',VCharts)
 Vue.component('LayoutCard',LayoutCard)
 Vue.component('LayoutTableAndPage',LayoutTableAndPage)
 
-Vue.use(ElementUI)
+Vue.use(ElementUI,{
+  size: 'small '
+})
+Vue.use(VantUI)
 
 Vue.config.productionTip = false
 
