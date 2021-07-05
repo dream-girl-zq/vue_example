@@ -16,22 +16,12 @@ export default {
     name: 'layoutMobileNav',
     data(){
         return {
-            navActive: 0,
-            navList: ['首页','列表','申请','我的'],
-            navRoute: ['/index']
+            navActive: 0
         }
     },
     computed: {
         ...mapGetters(["mobileCanShowRoutes"])
     },
-    methods: {
-        navSwitch(index){
-            this.navActive = index;
-        }
-    },
-    mounted(){
-        console.log(this.mobileCanShowRoutes)
-    }
 }
 </script>
 <style scoped>
@@ -39,13 +29,13 @@ export default {
     height: 6rem;
     width: 100%;
     background-color: rgba(1,11,37,.6);
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 1rem;
 }
 .zq-layout-mobile-nav-box{
     float: left;
-    width: 25%;
+    width: 20%;
     height: 100%;
-    padding: 0 2rem;
+    padding: 0 1rem;
 }
 .zq-layout-mobile-nav-item{
     width: 100%;
@@ -79,9 +69,15 @@ export default {
     background-image: url(../../assets/images_mobile/layout_nav_apply_active.png);
 }
 .zq-layout-mobile-nav-icon.icon-3{
-    background-image: url(../../assets/images_mobile/layout_nav_mine.png);
+    background-image: url(../../assets/images_mobile/layout_nav_cart.png);
 }
 .zq-layout-mobile-nav-box.active .zq-layout-mobile-nav-icon.icon-3{
+    background-image: url(../../assets/images_mobile/layout_nav_cart_active.png);
+}
+.zq-layout-mobile-nav-icon.icon-4{
+    background-image: url(../../assets/images_mobile/layout_nav_mine.png);
+}
+.zq-layout-mobile-nav-box.active .zq-layout-mobile-nav-icon.icon-4{
     background-image: url(../../assets/images_mobile/layout_nav_mine_active.png);
 }
 .zq-layout-mobile-nav-name{

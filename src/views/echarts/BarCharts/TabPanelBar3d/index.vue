@@ -27,7 +27,6 @@
                 </div>
                 <div class="zq-app-main-bottom50">
                     <LayoutCard title="2D圆柱柱状图">
-                        <BarCircle2D :dataObj="dataObjCircle" slot="content" />
                     </LayoutCard>
                 </div>
             </div>
@@ -37,24 +36,11 @@
 </template>
 <script>
 export default {
-    name: 'Bar2D',
-    components: {
-        BarCircle2D: (resolve) => require(['./components/BarCircle2D'],resolve),
-    },
+    name: 'TabPanelBar3d',
+    components: {},
     data(){
         return {
             zqAppMainSwitchItem: 0,
-            dataObjCircle: {
-                data: [{
-                    name: '第一类',count: [38,25,25,15,28,30,15,25,36,30,16]
-                },{
-                    name: '第二类',count: [25,20,21,25,32,28,20,14,30,25,23]
-                },{
-                    name: '第三类',count: [14,21,28,15,28,14,12,25,15,14,26]
-                },{
-                    name: '第四类',count: [25,19,14,30,12,25,32,35,28,28,32]
-                }]
-            }
         }
     }
 }

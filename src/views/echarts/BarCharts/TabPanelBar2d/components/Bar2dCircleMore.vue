@@ -5,11 +5,11 @@
 </template>
 <script>
 import * as echarts from 'echarts'
-import { ColorConf,GridConf,LengedConf,XAxisConf,YAxisConf } from '@/utils/echarts_conf'
+import { BaseConf,GridConf,LengedConf,XAxisConf,YAxisConf } from '@/utils/echarts_conf'
 export default {
-    name: 'BarCircleMoreBottom',
+    name: 'Bar2dCircleMore',
     props: {
-        dataObj: {
+        valueObj: {
             type: Object,
             default(){
                 return {
@@ -25,15 +25,11 @@ export default {
     },
     methods: {
         initChart(){
-            let rawData = JSON.parse(JSON.stringify(this.dataObj.data));
-            rawData.map(item=>{
-                item.zero = [];
-                item.count.map(subItem => item.zero.push(0.001));
-            })
+            let rawData = JSON.parse(JSON.stringify(this.valueObj.data));
             let chartConf = {};
-            chartConf.colors = ColorConf;
-            chartConf.barGap = 1.5;
-            chartConf.barWidth = 24;
+            chartConf.colors = BaseConf._color;
+            chartConf.barGap = BaseConf._barGap;
+            chartConf.barWidth = BaseConf._barWidth;
             chartConf.lengedHas = rawData.length>1;
             chartConf.lenged = [];
             chartConf.series = [];
@@ -47,8 +43,8 @@ export default {
                     symbolSize: [chartConf.barWidth,chartConf.barWidth/2],
                     symbolOffset: [symbolOffsetLeft,(-chartConf.barWidth/4)],
                     symbolPosition: 'end',
-                    z: 13,
-                    color: chartConf.colors[index],
+                    z: 12,
+                    color: chartConf.colors[index].top,
                     data: item.count
                 },{
                     name: 'bottom',
@@ -56,48 +52,17 @@ export default {
                     symbolSize: [chartConf.barWidth,chartConf.barWidth/2],
                     symbolOffset: [symbolOffsetLeft,chartConf.barWidth/4],
                     z: 12,
-                    color: chartConf.colors[index],
-                    data: item.zero,
-                },{
-                    name: 'bottomCircleOne',
-                    type: 'pictorialBar',
-                    symbolSize: [chartConf.barWidth*1.4,chartConf.barWidth*0.7],
-                    symbolOffset: [symbolOffsetLeft,chartConf.barWidth*0.7],
-                    z: 11,
-                    data: item.zero,
-                    itemStyle: {
-                        color: 'transparent',
-                        borderColor: chartConf.colors[index],
-                        borderWidth: 20
-                    }
-                },{
-                    name: 'bottomCircleTwo',
-                    type: 'pictorialBar',
-                    symbolSize: [chartConf.barWidth*2,chartConf.barWidth],
-                    symbolOffset: [symbolOffsetLeft,chartConf.barWidth*0.875],
-                    z: 11,
-                    data: item.zero,
-                    itemStyle: {
-                        color: 'transparent',
-                        borderColor: chartConf.colors[index],
-                        borderWidth: 20,
-                        borderType: 'dashed'
-                    }
+                    color: chartConf.colors[index].top,
+                    data: item.count,
                 },{
                     name: item.name,
                     type: 'bar',
                     barGap: chartConf.barGap,
                     barWidth: chartConf.barWidth,
-                    z: 12,
+                    z: 11,
                     data: item.count,
                     itemStyle: {
-                        color: chartConf.colors[index]
-                    },
-                    label: {
-                        show: true,
-                        position: 'top',
-                        fontSize: 14,
-                        color: '#FFFFFF'
+                        color: chartConf.colors[index].val
                     }
                 })
             })

@@ -72,20 +72,10 @@ export const constantRoutes = [
                 meta: { title: 'Echarts图表' },
                 children: [
                     {
-                        path: 'Bar2D',
-                        name: 'Bar2D',
-                        component: (resolve) => require(['@/views/echarts/Bar2D/index'],resolve),
-                        meta: { title: '平面柱图' }
-                    },{
-                        path: 'Bar3D',
-                        name: 'Bar3D',
-                        component: (resolve) => require(['@/views/echarts/Bar3D/index'],resolve),
-                        meta: { title: '立体柱图' }
-                    },{
-                        path: 'BarCircle',
-                        name: 'BarCircle',
-                        component: (resolve) => require(['@/views/echarts/BarCircle/index'],resolve),
-                        meta: { title: '立体圆柱图' }
+                        path: 'BarCharts',
+                        name: 'BarCharts',
+                        component: (resolve) => require(['@/views/echarts/BarCharts/index'],resolve),
+                        meta: { title: 'Bar柱图' }
                     }
                 ]
             }
@@ -114,6 +104,12 @@ export const constantRoutes = [
                 name: 'ApplyMobile',
                 component: (resolve) => require(['@/views/mobiles/Apply/index'],resolve),
                 meta: { title: '申请' }
+            },
+            {
+                path: '/CartMobile',
+                name: 'CartMobile',
+                component: (resolve) => require(['@/views/mobiles/Cart/index'],resolve),
+                meta: { title: '购物车' }
             },
             {
                 path: '/MineMobile',

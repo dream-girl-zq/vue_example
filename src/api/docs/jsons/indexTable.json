@@ -8,7 +8,8 @@
   "name": "vue项目从零开始搭建",
   "content": "vue项目搭建步骤总结加截图还有搭建过程中遇到的问题及解决办法",
   "type": "01",
-  "createTime": "2021-05-17 16:56:55"
+  "createTime": "2021-05-17 16:56:55",
+  "viewSrc": "docs/components/vues/vueProjectCreate.vue"
 },{
   "name": "vue项目使用MapArea生成地图",
   "content": "vue项目使用插件jquery.maphilight.js来给map+area设置背景颜色",

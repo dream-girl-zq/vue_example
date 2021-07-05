@@ -5,11 +5,11 @@
 </template>
 <script>
 import * as echarts from 'echarts'
-import { ColorConf,GridConf,LengedConf,XAxisConf,YAxisConf } from '@/utils/echarts_conf'
+import { BaseConf,GridConf,LengedConf,XAxisConf,YAxisConf } from '@/utils/echarts_conf'
 export default {
-    name: 'BarCircleStack',
+    name: 'Bar2dCircleStack',
     props: {
-        dataObj: {
+        valueObj: {
             type: Object,
             default(){
                 return {
@@ -25,7 +25,9 @@ export default {
     },
     methods: {
         initChart(){
-            let rawData = JSON.parse(JSON.stringify(this.dataObj.data));
+            let rawData = JSON.parse(JSON.stringify(this.valueObj.data));
+            console.log(rawData)
+            //处理数据
             rawData.map((item,index)=>{
                 //上一项存在的情况下，当前项的count都要加上上一项的值
                 if(index-1>-1){
@@ -36,14 +38,13 @@ export default {
                 }
             })
             let chartConf = {};
-            chartConf.colors = ColorConf;
-            chartConf.barGap = 0.2;
-            chartConf.barWidth = 24;
+            chartConf.colors = BaseConf._color;
+            chartConf.barWidth = BaseConf._barWidth;
+            chartConf.lengedHas = rawData.length>1;
             chartConf.lenged = [];
             chartConf.series = [];
             rawData.map((item,index)=>{
                 chartConf.lenged.push(item.name);
-                //头部顶部椭圆的x轴偏移量(根据index、chartConf.barGap和chartConf.barWidth来计算)
                 chartConf.series.push({
                     name: 'top',
                     type: 'pictorialBar',
@@ -51,7 +52,7 @@ export default {
                     symbolOffset: [0,(-chartConf.barWidth/4)],
                     symbolPosition: 'end',
                     z: 12-index,
-                    color: chartConf.colors[index],
+                    color: chartConf.colors[index].top,
                     data: item.count
                 },{
                     name: 'bottom',
@@ -59,7 +60,7 @@ export default {
                     symbolSize: [chartConf.barWidth,chartConf.barWidth/2],
                     symbolOffset: [0,chartConf.barWidth/4],
                     z: 12-index,
-                    color: chartConf.colors[index],
+                    color: chartConf.colors[index].top,
                     data: item.count,
                 },{
                     name: item.name,
@@ -69,20 +70,13 @@ export default {
                     z: 11-index,
                     data: item.count,
                     itemStyle: {
-                        color: chartConf.colors[index]
-                    },
-                    label: {
-                        show: true,
-                        position: 'top',
-                        fontSize: 14,
-                        color: '#FFFFFF'
+                        color: chartConf.colors[index].val
                     }
                 })
             })
-            console.log(chartConf.lenged)
             this.chartOptions = {
                 grid: {
-                    ...GridConf(true)
+                    ...GridConf(chartConf.lengedHas)
                 },
                 legend: {
                     ...LengedConf(),

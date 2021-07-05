@@ -1,17 +1,32 @@
 import * as echarts from 'echarts'
 
 let _fontSize = 14;
+let _axisFontColor = '#ffffff';
+let _barWidth = 24;
+let _barGap = 0.2;
 
 //color配置
-export const ColorConf = [
-    //new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#9825e0'},{offset:1,color:'#b170da'}],false),//紫色
-    new echarts.graphic.LinearGradient(0,0,0,1,[{offset: 0,color:'#165eec'},{offset:1,color:'#5454d0'}],false),//蓝色
-    new echarts.graphic.LinearGradient(0,0,0,1,[{offset: 0,color:'#21f3f3'},{offset:1,color:'#61dcdc'}],false),//青色
-    new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'#00EC28'},{offset:1,color:'#5DF076'}],false),//绿色
-    new echarts.graphic.LinearGradient(0,0,0,1,[{offset: 0,color:'#E5CE10'},{offset:1,color:'#e6db7c'}],false),//黄色
-    new echarts.graphic.LinearGradient(0,0,0,1,[{offset: 0,color:'#FF9A22'},{offset:1,color:'#FFD56E'}],false),//橙色
-    new echarts.graphic.LinearGradient(0,0,0,1,[{offset: 0,color:'#e41c1c'},{offset:1,color:'#ef5757'}],false),//红色
-];
+export const BaseConf = {
+    _color: [{
+        top: '#0b64e8',
+        val: '#0573E8'
+    },{
+        top: '#08abc1',
+        val: '#01C1AA'
+    },{
+        top: '#e5b107',
+        val: '#E5CE10'
+    },{
+        top: '#e94206',
+        val: '#E94F0B'
+    }],
+    _bgColor: {
+        top: 'rgba(32, 95, 159, 1)',
+        val: 'rgba(32, 95, 159, .6)'
+    },
+    _barWidth: _barWidth,
+    _barGap: _barGap
+};
 
 //ecahrts的Grid配置
 export function GridConf(hasLenged){
@@ -30,7 +45,7 @@ export function LengedConf(){
         itemHeight: 16,
         itemGap: 30,
         textStyle: {
-            color: '#FFFFFF',
+            color: _axisFontColor,
             fontSize: _fontSize,
             padding: [3,0,0,0]
         },
@@ -47,7 +62,7 @@ export function XAxisConf(){
         },
         axisTick: {show: false},
         axisLabel: {
-            color: '#FFFFFF',
+            color: _axisFontColor,
             fontSize: _fontSize
         },
         data: ['杭州','宁波','温州','嘉兴','湖州','绍兴','金华','衢州','舟山','台州','丽水']
@@ -67,7 +82,7 @@ export function YAxisConf(){
         },
         axisTick: {show: false},
         axisLabel: {
-            color: '#FFFFFF',
+            color: _axisFontColor,
             fontSize: _fontSize
         },
         splitLine: {
