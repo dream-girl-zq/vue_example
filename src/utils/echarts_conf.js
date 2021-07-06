@@ -4,6 +4,8 @@ let _fontSize = 14;
 let _axisFontColor = '#ffffff';
 let _barWidth = 24;
 let _barGap = 0.2;
+let _width = 4;
+let _long = 13;
 
 //color配置
 export const BaseConf = {
@@ -25,7 +27,9 @@ export const BaseConf = {
         val: 'rgba(32, 95, 159, .6)'
     },
     _barWidth: _barWidth,
-    _barGap: _barGap
+    _barGap: _barGap,
+    _width: _width,
+    _long: _long
 };
 
 //ecahrts的Grid配置

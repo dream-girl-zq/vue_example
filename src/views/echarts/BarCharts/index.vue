@@ -4,7 +4,7 @@
         <el-tab-pane label="平面柱图" name="TabPanelBar2d">
             <TabPanelBar2d />
         </el-tab-pane>
-        <el-tab-pane label="立体柱图" name="TabPanelBarCircleBottomCircle">
+        <el-tab-pane label="立体柱图" name="TabPanelBar3d">
             <TabPanelBar3d />
         </el-tab-pane>
     </el-tabs>
@@ -21,6 +21,10 @@ export default {
     data(){
         return {
             activeTabName: 'TabPanelBar2d',
+            activeTabNumb: {
+                TabPanelBar2d: 0,
+                TabPanelBar3d: 0
+            }
         }
     },
     methods: {

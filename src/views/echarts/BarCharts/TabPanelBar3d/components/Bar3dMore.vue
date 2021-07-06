@@ -7,7 +7,7 @@
 import * as echarts from 'echarts'
 import { BaseConf,GridConf,LengedConf,XAxisConf,YAxisConf } from '@/utils/echarts_conf'
 export default {
-    name: 'Bar3dStack',
+    name: 'Bar3dMore',
     props: {
         valueObj: {
             type: Object,
@@ -26,16 +26,6 @@ export default {
     methods: {
         initChart(){
             let rawData = JSON.parse(JSON.stringify(this.valueObj.data));
-            //对原始数据进行处理
-            rawData.map((item,index)=>{
-                //上一项存在的情况下，当前项的count都要加上上一项的值
-                if(index-1>-1){
-                    let preItemCount = rawData[index-1].count;
-                    item.count.map((subItem,subIndex)=>{
-                        item.count[subIndex]+=preItemCount[subIndex];
-                    })
-                }
-            })
             let chartConf = {};
             chartConf.colors = BaseConf._color;
             chartConf.width = BaseConf._width;
@@ -87,6 +77,7 @@ export default {
                     z: 10-index,
                     renderItem: function(params,api){
                         const location = api.coord([api.value(0), api.value(1)]);
+                        let locationX = location[0] + (chartConf.width*7.5)*(index+0.5-rawData.length/2);
                         return {
                             type: 'group',
                             children: [{
@@ -95,7 +86,7 @@ export default {
                                     api,
                                     xValue: api.value(0),
                                     yValue: api.value(1),
-                                    x: location[0],
+                                    x: locationX,
                                     y: location[1],
                                     xAxisPoint: api.coord([api.value(0), 0])
                                 },
@@ -108,7 +99,7 @@ export default {
                                     api,
                                     xValue: api.value(0),
                                     yValue: api.value(1),
-                                    x: location[0],
+                                    x: locationX,
                                     y: location[1],
                                     xAxisPoint: api.coord([api.value(0), 0])
                                 },
@@ -121,12 +112,12 @@ export default {
                                     api,
                                     xValue: api.value(0),
                                     yValue: api.value(1),
-                                    x: location[0],
+                                    x: locationX,
                                     y: location[1],
                                     xAxisPoint: api.coord([api.value(0), 0])
                                 },
                                 style: {
-                                    fill: index==rawData.length-1 ? chartConf.colors[index].val : 'transparent'
+                                    fill: chartConf.colors[index].val
                                 }
                             }]
                         }
